@@ -90,7 +90,7 @@ void setup() {
   Serial.println();
 
   //Fill array with testdata
-  for (uint16_t i = 0; i < BUFSIZE; i++) {
+  for (uint32_t i = 0; i < BUFSIZE; i++) {
     buf[i] = (i + 1) & 0xff;
   }
 

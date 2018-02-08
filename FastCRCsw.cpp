@@ -50,7 +50,7 @@ FastCRC7::FastCRC7(){}
  * @param datalen Length of Data
  * @return CRC value
  */
-uint8_t FastCRC7::crc7_upd(const uint8_t *data, uint16_t datalen)
+uint8_t FastCRC7::crc7_upd(const uint8_t *data, uint32_t datalen)
 {
 	uint8_t crc = seed;
 	if (datalen) do {
@@ -61,7 +61,7 @@ uint8_t FastCRC7::crc7_upd(const uint8_t *data, uint16_t datalen)
 	return crc >> 1;
 }
 
-uint8_t FastCRC7::crc7(const uint8_t *data, const uint16_t datalen)
+uint8_t FastCRC7::crc7(const uint8_t *data, const uint32_t datalen)
 {
   // poly=0x09 init=0x00 refin=false refout=false xorout=0x00 check=0x75
   seed = 0x00;
@@ -80,7 +80,7 @@ FastCRC8::FastCRC8(){}
  * @param datalen Length of Data
  * @return CRC value
  */
-uint8_t FastCRC8::smbus_upd(const uint8_t *data, uint16_t datalen)
+uint8_t FastCRC8::smbus_upd(const uint8_t *data, uint32_t datalen)
 {
 	uint8_t crc = seed;
 	if (datalen) do {
@@ -91,7 +91,7 @@ uint8_t FastCRC8::smbus_upd(const uint8_t *data, uint16_t datalen)
 	return crc;
 }
 
-uint8_t FastCRC8::smbus(const uint8_t *data, const uint16_t datalen)
+uint8_t FastCRC8::smbus(const uint8_t *data, const uint32_t datalen)
 {
   // poly=0x07 init=0x00 refin=false refout=false xorout=0x00 check=0xf4
   seed = 0x00;
@@ -104,7 +104,7 @@ uint8_t FastCRC8::smbus(const uint8_t *data, const uint16_t datalen)
  * @param datalen Length of Data
  * @return CRC value
  */
-uint8_t FastCRC8::maxim_upd(const uint8_t *data, uint16_t datalen)
+uint8_t FastCRC8::maxim_upd(const uint8_t *data, uint32_t datalen)
 {
 	uint8_t crc = seed;
 	if (datalen) do {
@@ -114,7 +114,7 @@ uint8_t FastCRC8::maxim_upd(const uint8_t *data, uint16_t datalen)
 	seed = crc;
 	return crc;
 }
-uint8_t FastCRC8::maxim(const uint8_t *data, const uint16_t datalen)
+uint8_t FastCRC8::maxim(const uint8_t *data, const uint32_t datalen)
 {
   // poly=0x31 init=0x00 refin=true refout=true xorout=0x00  check=0xa1
   seed = 0x00;
@@ -165,7 +165,7 @@ uint16_t FastCRC16::ccitt_upd(const uint8_t *data, uint16_t len)
 	
 	return crc;
 }
-uint16_t FastCRC16::ccitt(const uint8_t *data,const uint16_t datalen)
+uint16_t FastCRC16::ccitt(const uint8_t *data,const uint32_t datalen)
 {
  // poly=0x1021 init=0xffff refin=false refout=false xorout=0x0000 check=0x29b1
   seed = 0xffff;
@@ -206,7 +206,7 @@ uint16_t FastCRC16::mcrf4xx_upd(const uint8_t *data, uint16_t len)
 	return crc;
 }
 
-uint16_t FastCRC16::mcrf4xx(const uint8_t *data,const uint16_t datalen)
+uint16_t FastCRC16::mcrf4xx(const uint8_t *data,const uint32_t datalen)
 {
  // poly=0x1021 init=0xffff refin=true refout=true xorout=0x0000 check=0x6f91
   seed = 0xffff;
@@ -246,7 +246,7 @@ uint16_t FastCRC16::modbus_upd(const uint8_t *data, uint16_t len)
 	return crc;
 }
 
-uint16_t FastCRC16::modbus(const uint8_t *data, const uint16_t datalen)
+uint16_t FastCRC16::modbus(const uint8_t *data, const uint32_t datalen)
 {
  // poly=0x8005 init=0xffff refin=true refout=true xorout=0x0000 check=0x4b37
   seed = 0xffff;
@@ -286,7 +286,7 @@ uint16_t FastCRC16::kermit_upd(const uint8_t *data, uint16_t len)
 	return crc;
 }
 
-uint16_t FastCRC16::kermit(const uint8_t *data, const uint16_t datalen)
+uint16_t FastCRC16::kermit(const uint8_t *data, const uint32_t datalen)
 {
  // poly=0x1021 init=0x0000 refin=true refout=true xorout=0x0000 check=0x2189
  // sometimes byteswapped presentation of result
@@ -328,7 +328,7 @@ uint16_t FastCRC16::xmodem_upd(const uint8_t *data, uint16_t len)
 	return crc;
 }
 
-uint16_t FastCRC16::xmodem(const uint8_t *data, const uint16_t datalen)
+uint16_t FastCRC16::xmodem(const uint8_t *data, const uint32_t datalen)
 {
   //width=16 poly=0x1021 init=0x0000 refin=false refout=false xorout=0x0000 check=0x31c3
   seed = 0x0000;
@@ -370,7 +370,7 @@ uint16_t FastCRC16::x25_upd(const uint8_t *data, uint16_t len)
 	return crc;
 }
 
-uint16_t FastCRC16::x25(const uint8_t *data, const uint16_t datalen)
+uint16_t FastCRC16::x25(const uint8_t *data, const uint32_t datalen)
 {
   // poly=0x1021 init=0xffff refin=true refout=true xorout=0xffff check=0x906e
   seed = 0xffff;
@@ -446,7 +446,7 @@ uint32_t FastCRC32::crc32_upd(const uint8_t *data, uint16_t len)
 	return crc;
 }
 
-uint32_t FastCRC32::crc32(const uint8_t *data, const uint16_t datalen)
+uint32_t FastCRC32::crc32(const uint8_t *data, const uint32_t datalen)
 {
   // poly=0x04c11db7 init=0xffffffff refin=true refout=true xorout=0xffffffff check=0xcbf43926
   seed = 0xffffffff;
@@ -499,7 +499,7 @@ uint32_t FastCRC32::cksum_upd(const uint8_t *data, uint16_t len)
 	return crc;
 }
 
-uint32_t FastCRC32::cksum(const uint8_t *data, const uint16_t datalen)
+uint32_t FastCRC32::cksum(const uint8_t *data, const uint32_t datalen)
 {
   // width=32 poly=0x04c11db7 init=0x00000000 refin=false refout=false xorout=0xffffffff check=0x765e7680
   seed = 0x00;
